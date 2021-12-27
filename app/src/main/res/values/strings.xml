@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FindMyDefibrillator</string>
+    <string name="title_activity_find_nearest_defibrillator">FindNearestDefibrillator</string>
 </resources>
