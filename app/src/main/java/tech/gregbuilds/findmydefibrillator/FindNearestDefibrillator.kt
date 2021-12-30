@@ -8,10 +8,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import tech.gregbuilds.findmydefibrillator.data.LocationData
 import tech.gregbuilds.findmydefibrillator.databinding.ActivityFindNearestDefibrillatorBinding
 import tech.gregbuilds.findmydefibrillator.model.Defibrillator
+import tech.gregbuilds.findmydefibrillator.util.getClosestDefibFromList
 import java.lang.Math.abs
 
 class FindNearestDefibrillator : AppCompatActivity(), OnMapReadyCallback {
@@ -51,20 +51,19 @@ class FindNearestDefibrillator : AppCompatActivity(), OnMapReadyCallback {
 
         val locationDataLoaded = LocationData().LoadDefibLocations()
 
-        routeToNearestDefibrillator(myLocation, locationDataLoaded)
+        var nearestDefib = getClosestDefibFromList(myLocation, locationDataLoaded)
+        //drawRouteToDefib(myLocation, nearestDefib)
 
     }
 
-    fun routeToNearestDefibrillator(currentLocation: LatLng, listOfDefibs: List<Defibrillator>): Defibrillator {
-        var returnDefib = Defibrillator("blank defib", R.drawable.kings,LatLng(100000.00, 100000.00))
-        for(defib in listOfDefibs){
-            if(abs(currentLocation.latitude.minus(defib.defibLoc.latitude)) < (abs(currentLocation.latitude.minus(returnDefib.defibLoc.latitude))
-                        && abs(currentLocation.longitude.minus(defib.defibLoc.longitude)) < (abs(currentLocation.longitude.minus(returnDefib.defibLoc.longitude))
-            {
-                returnDefib = defib
-            }
 
-        }
-        return Defibrillator("Closest Defib", R.drawable.kings, LatLng(1.0, 2.0))
+/*    fun drawRouteToDefib(currentLocation: LatLng, destinationDefib: Defibrillator){
+        //TODO draw a route on the map
+
+        displayTimeToDefib()
     }
+
+    private fun displayTimeToDefib() {
+        TODO("Not yet implemented")
+    }*/
 }
