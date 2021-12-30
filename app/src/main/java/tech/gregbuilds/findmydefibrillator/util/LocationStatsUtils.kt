@@ -22,5 +22,5 @@ fun getClosestDefibFromList(currentLocation: LatLng, listOfDefibs: List<Defibril
             }
 
         }
-        return Defibrillator("Closest Defib", R.drawable.kings, LatLng(1.0, 2.0))
+        return returnDefib
     }
